@@ -1,0 +1,211 @@
+:root {
+  --font-family: system-ui, -apple-system, sans-serif;
+  --transition: 0.3s ease;
+}
+
+.app-wrapper.light {
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --primary-color: #4a90e2;
+  --primary-hover: #357abd;
+  --danger-color: #e74c3c;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --input-bg: #fff;
+}
+
+.app-wrapper.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #f4f4f4;
+  --card-bg: #2d2d2d;
+  --border-color: #444;
+  --primary-color: #5fa8ff;
+  --primary-hover: #4a90e2;
+  --danger-color: #ff6b6b;
+  --success-color: #4cd137;
+  --warning-color: #fbc531;
+  --input-bg: #3d3d3d;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: #1a1a1a; /* default behind app wrapper */
+}
+
+.app-wrapper {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Layout */
+.main-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Components */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"], select, textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.radio-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.error {
+  color: var(--danger-color);
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-secondary { background-color: #7f8c8d; color: white; }
+.btn-delete { background-color: var(--danger-color); color: white; }
+.btn-edit { background-color: var(--warning-color); color: black; }
+
+/* Filter Bar */
+.filter-sort-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.filter-sort-bar input, .filter-sort-bar select {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Book List & Item */
+.book-list { display: flex; flex-direction: column; gap: 15px; }
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid var(--border-color);
+  margin-bottom: 0;
+}
+
+.status-read { border-left-color: var(--success-color); }
+.status-progress { border-left-color: var(--warning-color); }
+.status-planned { border-left-color: var(--danger-color); }
+
+.book-content h4 { margin: 0 0 10px 0; font-size: 1.2rem; }
+
+.book-badges { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge.category { background-color: var(--primary-color); color: white; }
+.badge.priority { background-color: var(--border-color); }
+.badge.status { 
+  background-color: var(--bg-color); 
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.description { font-size: 0.9rem; color: #7f8c8d; margin: 0; line-height: 1.4; }
+.app-wrapper.dark .description { color: #b2bec3; }
+
+.book-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Stats */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stat-item { padding: 10px; background: var(--bg-color); border-radius: 4px; text-align: center;}
+.stat-item span { display: block; font-size: 0.85rem; color: #7f8c8d;}
+.app-wrapper.dark .stat-item span { color: #b2bec3; }
